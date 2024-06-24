@@ -6,7 +6,7 @@ use App\Http\Resources\TripRequestDetailResource;
 use Illuminate\Http\Request;
 use App\Models\TripRequest;
 use App\Http\Resources\TripRequestResource;
-use App\Http\Resources\UpdateTripRequest;
+use App\Http\Resources\UpdateTripReuest;
 use App\Http\Requests\TripRequestStoreRequest;
 use App\Http\Requests\TripRequestUpdateRequest;
 use Illuminate\Http\JsonResponse;
@@ -51,6 +51,8 @@ class TripRequestController extends Controller
     public function destroy(TripRequest $tripRequest)
     {
         $tripRequest->delete();
-        return response()->json(null, 204);
+        return response()->json([
+            'message' => 'Trip request deleted successfully',
+        ], 204);
     }
 }
