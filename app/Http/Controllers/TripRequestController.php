@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateTripRequest;
 use App\Http\Resources\TripRequestDetailResource;
 use Illuminate\Http\Request;
 use App\Models\TripRequest;
 use App\Http\Resources\TripRequestResource;
-use App\Http\Resources\UpdateTripReuest;
 use App\Http\Requests\TripRequestStoreRequest;
 use App\Http\Requests\TripRequestUpdateRequest;
 use Illuminate\Http\JsonResponse;
@@ -44,15 +44,19 @@ class TripRequestController extends Controller
 
     public function update(UpdateTripRequest $request, $id)
     {
-        $tripRequest = TripRequest::findOrFail($id);
+        $tripRequest = $request->tripRequest;
+
+        $tripRequest->update($request->validated());
+
+        return response()->json(new TripRequestDetailResource($tripRequest));
 
     }
 
-    public function destroy(TripRequest $tripRequest)
+    public function destroy($id)
     {
+        $tripRequest = TripRequest::findOrFail($id);
         $tripRequest->delete();
-        return response()->json([
-            'message' => 'Trip request deleted successfully',
-        ], 204);
+
+       return response()->json(['message' => 'Trip request deleted successfully'], 200);
     }
 }

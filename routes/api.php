@@ -29,8 +29,8 @@ Route::get('/users/{id}', [UserController::class, 'show']);
 Route::post('/create_trip', [TripRequestController::class, 'store']);
 Route::get('/index_trip', [TripRequestController::class, 'index']);
 Route::get('/trip/{id}', [TripRequestController::class, 'show']);
-Route::put('/trip/update', [TripRequestController::class,'update']);
-
+Route::put('/trip/update/{id}', [TripRequestController::class,'update']);
+Route::delete('/trip/delete/{id}', [TripRequestController::class,'destroy']);
 
 // Route::middleware(['auth'])->group(function () {
 // Route::post('/create_user', [UserController::class, 'createUser']);
