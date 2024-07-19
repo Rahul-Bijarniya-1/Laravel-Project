@@ -22,9 +22,9 @@ class DeleteUserRequest extends FormRequest
     public function rules(): array
     {
         return [
-                'user_id' => 'required_without_all:resource_type,resource_id|integer|exists:users2,id',
-                'resource_type' => 'required_with:resource_id|string|in:customer,transporter',
-                'resource_id' => 'required_with:resource_type|integer',
+                'user_id' => 'required|integer|exists:users2,user_id',
+                'resource_type' => 'nullable|string|in:customer,transporter',
+                'resource_id' => 'nullable|integer',
         ];
     }
 }

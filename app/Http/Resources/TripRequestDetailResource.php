@@ -34,18 +34,21 @@ class TripRequestDetailResource extends JsonResource
             'customer' => $this->customer ? [
                 'id' => $this->customer->id,
                 'phone_number' => $this->customer->phone_number,
-                'user' => $this->customer->users2 ? [
-                    'user_id' => $this->customer->users2->user_id,
-                    'name' => $this->customer->users2->name,
+                'user' => $user ? [
+                    'id' => $user->user_id,
+                    'name' => $user->name,
+                    'phone_number' => $user->resource->phone_number,
+                    'resource_type' => $userType,
                 ] : null,
             ] : null,
             'transporter' => $this->transporter ? [
                 'id' => $this->transporter->id,
                 'phone_number' => $this->transporter->phone_number,
-                'user' => $this->transporter->users2 ? [
-                    'user_id' => $this->transporter->users2->id,
-                    'name' => $this->transporter->users2->name,
-                    'email' => $this->transporter->users2->email,
+                'user' => $user ? [
+                    'id' => $user->user_id,
+                    'name' => $user->name,
+                    'phone_number' => $user->resource->phone_number,
+                    'resource_type' => $userType,
                 ] : null,
             ] : null,
             // 'user' => $user ? [

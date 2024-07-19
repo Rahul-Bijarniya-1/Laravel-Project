@@ -12,9 +12,9 @@ class TransportationSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\Customer::factory()->count(10)->create();
-        \App\Models\Transporter::factory()->count(10)->create();
-        \App\Models\User::factory()->count(20)->create();
+        // \App\Models\Customer::factory()->count(10)->create();
+        // \App\Models\Transporter::factory()->count(10)->create();
+        \App\Models\User2::factory()->count(20)->create();
         \App\Models\TripRequest::factory()->count(15)->create();
     }
 }

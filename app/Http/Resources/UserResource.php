@@ -19,7 +19,7 @@ class UserResource extends JsonResource
             'name' => $this->name,
             'resource_type' => class_basename($this->resource_type), // Get the class name without namespace
             'resource_id' => $this->resource_id,
-            'phone_number' => $this->resource->phone_number,
+            'phone_number' => $this->resource->resource->phone_number,
         ];
     }
 }
